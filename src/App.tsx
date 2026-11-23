@@ -50,7 +50,8 @@ export default function App() {
       setProject(p);
       setPlate(p.plates[0]?.index ?? 1);
       const meshes = Array.from(p.meshes.values());
-      setPaintMode(meshes.some((m) => m.paintColors) ? 'colors' : meshes.some((m) => m.paintSupports) ? 'supports' : 'none');
+      // painted colors are how the model really looks; support paint is opt-in (x-ray view)
+      setPaintMode(meshes.some((m) => m.paintColors) ? 'colors' : 'none');
       setSelected(null);
       setTab('objects');
     } catch (e) {
